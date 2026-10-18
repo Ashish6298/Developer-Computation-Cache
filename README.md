@@ -1,5 +1,6 @@
 <a id="top"></a>
 <div align="center">
+
 ```text
           ██████╗ ███████╗██╗   ██╗███████╗██╗      ██████╗ ██████╗ ███████╗██████╗
          ██╔══██╗██╔════╝██║   ██║██╔════╝██║     ██╔═══██╗██╔══██╗██╔════╝██╔══██╗
@@ -17,8 +18,8 @@
 
                            ██████╗ █████╗  ██████╗██╗  ██╗███████╗
                           ██╔════╝██╔══██╗██╔════╝██║  ██║██╔════╝
-                           ██║     ███████║██║     ███████║█████╗
-                           ██║     ██╔══██║██║     ██╔══██║██╔══╝
+                          ██║     ███████║██║     ███████║█████╗
+                          ██║     ██╔══██║██║     ██╔══██║██╔══╝
                           ╚██████╗██║  ██║╚██████╗██║  ██║███████╗
                            ╚═════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝
 ```
@@ -3477,7 +3478,7 @@ Unless you explicitly state otherwise, any contribution you intentionally submit
 
 ## Contributing
 
-Contributions of every kind are welcome: bug reports, fixes, tests, documentation and ideas.
+Contributions of every kind are welcome: bug reports, fixes, tests, documentation and ideas. Please review our [Contributing Guide](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) for full engineering guidelines and workflows.
 
 | Contribution | What helps most |
 | :--- | :--- |
