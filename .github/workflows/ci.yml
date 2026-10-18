@@ -3,20 +3,9 @@ name: CI Matrix
 on:
   push:
     branches: [ main, master ]
-    paths-ignore:
-      - 'README.md'
-      - 'CHANGELOG.md'
-      - 'docs/**'
-      - '**.md'
-      - '.gitignore'
   pull_request:
     branches: [ main, master ]
-    paths-ignore:
-      - 'README.md'
-      - 'CHANGELOG.md'
-      - 'docs/**'
-      - '**.md'
-      - '.gitignore'
+  workflow_dispatch:
 
 env:
   CARGO_TERM_COLOR: always
