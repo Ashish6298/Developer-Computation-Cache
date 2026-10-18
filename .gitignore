@@ -51,3 +51,9 @@ test_output/
 *.profdata
 lcov.info
 coverage/
+
+# Documentation reports and phase notes
+docs/report/
+Developer Computation Cache — Detailed phase.txt
+Developer Computation Cache — Detailed phase.txt.md
+Developer Computation Cache - Detailed phase.txt
