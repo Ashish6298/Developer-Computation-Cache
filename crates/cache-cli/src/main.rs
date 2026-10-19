@@ -9,10 +9,37 @@ use std::time::Duration;
 use walkdir::WalkDir;
 
 mod cli;
+mod ui;
 use cli::{CacheCommands, Cli, Commands, ExitCode, RunArgs};
 
 fn main() -> Result<()> {
-    let cli = Cli::parse();
+    #[cfg(windows)]
+    ui::enable_ansi_support();
+
+    let cli = match Cli::try_parse() {
+        Ok(c) => c,
+        Err(err) => {
+            if err.kind() == clap::error::ErrorKind::DisplayHelp {
+                let args: Vec<String> = std::env::args().collect();
+                let is_subcommand_help = args.iter().skip(1).any(|a| {
+                    !a.starts_with('-') && a != "help"
+                });
+                if !is_subcommand_help {
+                    ui::print_help();
+                    return Ok(());
+                }
+            }
+            err.exit();
+        }
+    };
+
+    let command = match cli.command {
+        Some(cmd) => cmd,
+        None => {
+            ui::print_welcome_hub();
+            return Ok(());
+        }
+    };
 
     let cache_dir = cli.cache_dir.unwrap_or_else(|| {
         if let Ok(dir) = std::env::var("DCC_CACHE_DIR") {
@@ -30,7 +57,7 @@ fn main() -> Result<()> {
 
     let storage = CasStorage::new(config)?;
 
-    match cli.command {
+    match command {
         Commands::Init { max_size } => handle_init(&storage, max_size.as_deref(), cli.json)?,
         Commands::Run(args) => handle_run(&storage, args, cli.json)?,
         Commands::Inspect { key } => handle_inspect(&storage, &key, cli.json)?,

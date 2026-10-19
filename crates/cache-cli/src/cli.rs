@@ -31,8 +31,44 @@ impl ExitCode {
     }
 }
 
+use clap::builder::styling::{AnsiColor, Effects, Styles};
+
+fn get_styles() -> Styles {
+    Styles::styled()
+        .header(AnsiColor::Cyan.on_default().effects(Effects::BOLD))
+        .usage(AnsiColor::Cyan.on_default().effects(Effects::BOLD))
+        .literal(AnsiColor::BrightWhite.on_default().effects(Effects::BOLD))
+        .placeholder(AnsiColor::BrightCyan.on_default())
+        .valid(AnsiColor::Green.on_default())
+        .invalid(AnsiColor::Yellow.on_default())
+        .error(AnsiColor::Red.on_default().effects(Effects::BOLD))
+}
+
+const AFTER_HELP: &str = "\
+\x1b[1;36mEXAMPLES:\x1b[0m
+  \x1b[90m# 1. Intercept and cache any command (0 ms replay on identical hits):\x1b[0m
+  $ \x1b[1;37mdcc run -i src/ -o dist/app -- cargo build --release\x1b[0m
+
+  \x1b[90m# 2. Inspect cache hit/miss statistics and storage health diagnostics:\x1b[0m
+  $ \x1b[1;37mdcc stats\x1b[0m
+  $ \x1b[1;37mdcc doctor\x1b[0m
+
+  \x1b[90m# 3. Enforce disk quota with LRU eviction and verify integrity:\x1b[0m
+  $ \x1b[1;37mdcc prune --max-size 10GB --strategy lru\x1b[0m
+  $ \x1b[1;37mdcc verify\x1b[0m
+
+\x1b[1;36mDOCUMENTATION:\x1b[0m
+  https://github.com/Ashish6298/Reforge
+";
+
 #[derive(Parser, Debug)]
-#[command(name = "dcc", version, about = "Developer Computation Cache", long_about = None)]
+#[command(
+    name = "dcc",
+    version,
+    about = "Developer Computation Cache (`dcc`)\nHigh-Performance, Local-First Deterministic Computation Caching Engine",
+    styles = get_styles(),
+    after_help = AFTER_HELP
+)]
 pub struct Cli {
     #[arg(short, long, global = true, help = "Path to the cache root directory")]
     pub cache_dir: Option<PathBuf>,
@@ -41,12 +77,12 @@ pub struct Cli {
     pub json: bool,
 
     #[command(subcommand)]
-    pub command: Commands,
+    pub command: Option<Commands>,
 }
 
 #[derive(Subcommand, Debug)]
 pub enum Commands {
-    #[command(about = "Initialize local cache directory and configuration")]
+    #[command(about = "Initialize local cache directory (.dcc_cache) and storage quotas")]
     Init {
         #[arg(
             short,
@@ -56,28 +92,28 @@ pub enum Commands {
         max_size: Option<String>,
     },
 
-    #[command(about = "Execute a computation with caching")]
+    #[command(about = "Execute a command with caching (0 ms replay on identical hits)")]
     Run(RunArgs),
 
-    #[command(about = "Inspect a cached computation key")]
+    #[command(about = "Inspect a cached computation key, environment, and manifests")]
     Inspect {
         #[arg(help = "The SHA-256 computation key to inspect")]
         key: String,
     },
 
-    #[command(about = "Display cache statistics and storage metrics")]
+    #[command(about = "Display cache hit/miss statistics and storage metrics")]
     Stats,
 
-    #[command(about = "Verify integrity of stored objects")]
+    #[command(about = "Verify cryptographic SHA-256 integrity of stored CAS objects")]
     Verify,
 
-    #[command(about = "Clean entire cache or delete specific keys")]
+    #[command(about = "Clean entire cache or delete specific computation keys")]
     Clean {
         #[arg(short, long, help = "Specific computation key to delete")]
         key: Option<String>,
     },
 
-    #[command(about = "Prune unreferenced objects or enforce max cache size")]
+    #[command(about = "Prune unreferenced objects or enforce max cache storage budget")]
     Prune {
         #[arg(
             long,
@@ -99,7 +135,7 @@ pub enum Commands {
         dry_run: bool,
     },
 
-    #[command(about = "Inspect or manage cache configuration")]
+    #[command(about = "Inspect or manage cache configuration settings")]
     Config {
         #[arg(
             long,
@@ -108,7 +144,7 @@ pub enum Commands {
         get: Option<String>,
     },
 
-    #[command(about = "Diagnose cache health, environment, and permissions")]
+    #[command(about = "Diagnose cache health, environment isolation, and write permissions")]
     Doctor,
 
     #[command(about = "Manage and maintain local computation cache (clean, prune, verify, stats)")]
