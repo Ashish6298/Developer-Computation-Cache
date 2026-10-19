@@ -85,7 +85,7 @@ pub fn print_welcome_hub() {
     let logo = render_logo();
 
     let banner = format!(
-r#"
+        r#"
 {logo}
   {BOLD}Developer Computation Cache (`dcc`){RESET}
   {GRAY}High-Performance, Local-First Deterministic Computation Caching Engine{RESET}
@@ -130,7 +130,7 @@ pub fn print_help() {
     enable_ansi_support();
 
     let help_text = format!(
-r#"
+        r#"
   {BOLD}Developer Computation Cache (`dcc`){RESET}
   {GRAY}High-Performance, Local-First Deterministic Computation Caching Engine{RESET}
 

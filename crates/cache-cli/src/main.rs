@@ -21,9 +21,10 @@ fn main() -> Result<()> {
         Err(err) => {
             if err.kind() == clap::error::ErrorKind::DisplayHelp {
                 let args: Vec<String> = std::env::args().collect();
-                let is_subcommand_help = args.iter().skip(1).any(|a| {
-                    !a.starts_with('-') && a != "help"
-                });
+                let is_subcommand_help = args
+                    .iter()
+                    .skip(1)
+                    .any(|a| !a.starts_with('-') && a != "help");
                 if !is_subcommand_help {
                     ui::print_help();
                     return Ok(());

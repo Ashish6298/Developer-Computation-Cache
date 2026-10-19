@@ -137,12 +137,8 @@ impl PathUtils {
         let root = sandbox_root.as_ref();
         let target = target_path.as_ref();
 
-        let canonical_root = root
-            .canonicalize()
-            .map_err(|e| CacheError::StorageError(e))?;
-        let canonical_target = target
-            .canonicalize()
-            .map_err(|e| CacheError::StorageError(e))?;
+        let canonical_root = root.canonicalize().map_err(CacheError::StorageError)?;
+        let canonical_target = target.canonicalize().map_err(CacheError::StorageError)?;
 
         if !canonical_target.starts_with(&canonical_root) {
             return Err(CacheError::PathTraversal(format!(
@@ -189,16 +185,10 @@ mod tests {
         let native = PathUtils::to_native_path(norm);
 
         #[cfg(windows)]
-        assert_eq!(
-            native,
-            PathBuf::from("target\\debug\\build\\output.rlib")
-        );
+        assert_eq!(native, PathBuf::from("target\\debug\\build\\output.rlib"));
 
         #[cfg(not(windows))]
-        assert_eq!(
-            native,
-            PathBuf::from("target/debug/build/output.rlib")
-        );
+        assert_eq!(native, PathBuf::from("target/debug/build/output.rlib"));
     }
 
     #[test]

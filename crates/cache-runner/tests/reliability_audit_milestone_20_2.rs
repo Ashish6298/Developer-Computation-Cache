@@ -190,7 +190,10 @@ fn test_audit_20_2_concurrent_processes_and_locking() {
                 "sh",
                 vec![
                     "-c".to_string(),
-                    format!("printf '%s' 'THREAD_{}_OUTPUT' > concurrent_out_{}.txt", i, i),
+                    format!(
+                        "printf '%s' 'THREAD_{}_OUTPUT' > concurrent_out_{}.txt",
+                        i, i
+                    ),
                 ],
             );
 

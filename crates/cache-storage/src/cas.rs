@@ -1,4 +1,3 @@
-use chrono::Utc;
 use dcc_core::{ByteSize, CacheEntry, CacheError, CacheKey, Digest, Result, SizeParseError};
 use serde::{Deserialize, Serialize};
 use std::fs::{self, File, OpenOptions};

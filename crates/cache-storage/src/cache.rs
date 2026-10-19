@@ -194,9 +194,14 @@ impl Cache {
 
             if let Some(parent) = target_path.parent() {
                 fs::create_dir_all(parent)?;
-                if let (Ok(can_parent), Ok(can_dest)) = (parent.canonicalize(), destination_dir.canonicalize()) {
+                if let (Ok(can_parent), Ok(can_dest)) =
+                    (parent.canonicalize(), destination_dir.canonicalize())
+                {
                     if !can_parent.starts_with(&can_dest) {
-                        return Err(CacheError::PathTraversal(format!("Symlink directory escape: parent resolves outside destination")));
+                        return Err(CacheError::PathTraversal(
+                            "Symlink directory escape: parent resolves outside destination"
+                                .to_string(),
+                        ));
                     }
                 }
             }

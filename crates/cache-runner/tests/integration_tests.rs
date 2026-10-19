@@ -511,7 +511,8 @@ fn test_milestone_5_1_input_changes_comprehensive() {
         "sh",
         vec![
             "-c".to_string(),
-            "content=$(cat input_a.txt); printf '%s' \"PROCESSED: $content\" > output.txt".to_string(),
+            "content=$(cat input_a.txt); printf '%s' \"PROCESSED: $content\" > output.txt"
+                .to_string(),
         ],
     );
 

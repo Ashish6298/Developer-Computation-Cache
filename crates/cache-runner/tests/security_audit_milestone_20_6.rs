@@ -69,7 +69,9 @@ fn test_audit_20_6_cache_poisoning_tamper_detection() {
 #[test]
 fn test_audit_20_6_sensitive_data_detection() {
     // Environment keys
-    assert!(SensitiveDataDetector::is_sensitive_key("AWS_SECRET_ACCESS_KEY"));
+    assert!(SensitiveDataDetector::is_sensitive_key(
+        "AWS_SECRET_ACCESS_KEY"
+    ));
     assert!(SensitiveDataDetector::is_sensitive_key("GITHUB_TOKEN"));
     assert!(SensitiveDataDetector::is_sensitive_key("DATABASE_PASSWORD"));
     assert!(SensitiveDataDetector::is_sensitive_key("AUTH_BEARER_TOKEN"));
