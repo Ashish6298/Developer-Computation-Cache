@@ -197,7 +197,7 @@ dependencies = [
 
 [[package]]
 name = "dcc-cli"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "anyhow",
  "chrono",
@@ -213,7 +213,7 @@ dependencies = [
 
 [[package]]
 name = "dcc-core"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "chrono",
  "hex",
@@ -227,7 +227,7 @@ dependencies = [
 
 [[package]]
 name = "dcc-integrations"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "anyhow",
  "dcc-core",
@@ -241,7 +241,7 @@ dependencies = [
 
 [[package]]
 name = "dcc-runner"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "chrono",
  "dcc-core",
@@ -257,7 +257,7 @@ dependencies = [
 
 [[package]]
 name = "dcc-storage"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "chrono",
  "dcc-core",
@@ -271,7 +271,7 @@ dependencies = [
 
 [[package]]
 name = "dcc-test-utils"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "dcc-core",
  "dcc-runner",
