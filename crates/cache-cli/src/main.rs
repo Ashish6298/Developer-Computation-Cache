@@ -123,7 +123,7 @@ fn handle_init(storage: &CasStorage, max_size_str: Option<&str>, json: bool) -> 
     // 3. Persist local configuration file (config.json)
     let config_path = storage.root_dir().join("config.json");
     let config_payload = serde_json::json!({
-        "version": "1.0.0",
+        "version": dcc_core::DCC_VERSION,
         "cache_dir": storage.root_dir(),
         "max_size_bytes": limit_bytes,
         "max_size_human": dcc_core::ByteSize::bytes(limit_bytes).to_human_readable()

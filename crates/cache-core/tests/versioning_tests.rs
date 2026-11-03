@@ -21,7 +21,7 @@ fn test_milestone_19_1_semver_compliance_and_schema_versioning() {
         );
     }
 
-    assert_eq!(DCC_VERSION, "1.0.0");
+    assert_eq!(DCC_VERSION, env!("CARGO_PKG_VERSION"));
 
     // 2. Schema versioning compatibility
     assert_eq!(DCC_SCHEMA_VERSION, 1);

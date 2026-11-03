@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.1] - 2026-11-03
+
+### Added
+- Packaged README.md into all published crate archives on crates.io.
+
+### Changed
+- Workspace package patch version incremented to 1.0.1.
+
+### Fixed
+- Fixed missing crate documentation and descriptions on crates.io.
+
+### Security
+- Retained all cryptographic CAS hash verification and workspace sandbox confinement guarantees.
+
+### Breaking Changes
+- None. Fully backward compatible patch release.
+
+---
+
 ## [1.0.0] - 2026-09-18
 
 ### Added

@@ -84,6 +84,7 @@ pub fn print_welcome_hub() {
 
     let logo = render_logo();
 
+    let version = dcc_core::DCC_VERSION;
     let banner = format!(
         r#"
 {logo}
@@ -111,7 +112,7 @@ pub fn print_welcome_hub() {
      • {BOLD}Why to use:{RESET}  Real-time visibility into disk savings and engine diagnostics.
 
   {GRAY}─────────────────────────────────────────────────────────────────────────────{RESET}
-  {GRAY}v1.0.0  ·  rust 1.77+  ·  mit / apache-2.0  ·  github.com/Ashish6298/Reforge{RESET}
+  {GRAY}v{version}  ·  rust 1.77+  ·  mit / apache-2.0  ·  github.com/Ashish6298/Developer-Computation-Cache{RESET}
   {GRAY}─────────────────────────────────────────────────────────────────────────────{RESET}
 
   {GRAY}╭─────────────────────────────────────────────────────────────────────────╮{RESET}
