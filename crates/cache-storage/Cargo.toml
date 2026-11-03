@@ -8,6 +8,7 @@ repository.workspace = true
 homepage.workspace = true
 documentation.workspace = true
 rust-version.workspace = true
+readme = "README.md"
 description = "Content-Addressed Storage (CAS), atomic operations, integrity validation, and eviction for DCC"
 
 [dependencies]

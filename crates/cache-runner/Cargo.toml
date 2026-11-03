@@ -8,6 +8,7 @@ repository.workspace = true
 homepage.workspace = true
 documentation.workspace = true
 rust-version.workspace = true
+readme = "README.md"
 description = "Execution engine, cache lookup, process execution, restoration, and miss explanation for DCC"
 
 [dependencies]

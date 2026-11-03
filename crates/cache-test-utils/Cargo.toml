@@ -8,6 +8,7 @@ repository.workspace = true
 homepage.workspace = true
 documentation.workspace = true
 rust-version.workspace = true
+readme = "README.md"
 description = "Test utilities, synthetic workspace generator, and failure injectors for DCC"
 
 [dependencies]

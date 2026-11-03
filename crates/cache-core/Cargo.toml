@@ -8,6 +8,7 @@ repository.workspace = true
 homepage.workspace = true
 documentation.workspace = true
 rust-version.workspace = true
+readme = "README.md"
 description = "Core domain types, deterministic normalization, canonical serialization and key generation for DCC"
 
 [dependencies]

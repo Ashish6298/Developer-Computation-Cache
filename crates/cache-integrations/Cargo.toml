@@ -8,6 +8,7 @@ repository.workspace = true
 homepage.workspace = true
 documentation.workspace = true
 rust-version.workspace = true
+readme = "README.md"
 description = "Generic developer integrations and adapters for DCC (build tools, linters, code generators)"
 
 [dependencies]
